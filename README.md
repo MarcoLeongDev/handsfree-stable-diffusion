@@ -50,4 +50,8 @@ echo "\nYou can also monitor with the progress \`tmux a\` by ssh to the instance
 Kindly provide some suggestions for Windows
 ```
 
-
+# FAQ
+1. I am using another region, how do I find the right AMI image id?
+2. How do I skip the tweaks and just use the Cloudformation template and install stable diffusion webui?
+3. Can I use the code for my business?
+4. Can I use the creation of stable diffusion for my business?
