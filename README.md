@@ -9,6 +9,18 @@ This Cloudformation template is tested on [`G5 instance`](https://aws.amazon.com
 - A key pair for EC2, i.e `keypair.pem`
 
 # Usage 
+1. Clone this repo
+```
+git clone https://github.com/MarcoLeongDev/handsfree-stable-diffusion.git
+```
+2. Change directory to the project
+```
+cd handsfree-stable-diffusion
+```
+3. Copy and edit the shell command. Changes needed:
+- `my-stack-name`: to a preferred name. This name is what you are going to see on CloudFormation console and to be referred to in awscli
+- `keypair`: to the name of your key pair. e.g. `mykey.pem` should be `mykey`, without the `.pem` extension name
+
 ### MacOS CLI
 ```
 STACK_NAME="my-stack-name"
@@ -36,4 +48,9 @@ echo "webui link:        http://"$INSTANCE_IP":7860"
 echo "SSH to the EC2:    ssh -i \"$KEY_NAME.pem\" ubuntu@$INSTANCE_IP"
 echo "\nYou can also monitor with the progress \`tmux a\` by ssh to the instance after a couple of minutes\n"
 ```
+### Windows Command Prompt / Powershell
+```
+Kindly provide some suggestions for Windows
+```
+
 
