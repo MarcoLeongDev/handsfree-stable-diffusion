@@ -9,15 +9,12 @@ This Cloudformation template is tested on [`G5 instance`](https://aws.amazon.com
 - A key pair for EC2, i.e `keypair.pem`
 
 # Usage 
-1. Clone this repo
+1. Clone this repo and change directory to the project
 ```
 git clone https://github.com/MarcoLeongDev/handsfree-stable-diffusion.git
-```
-2. Change directory to the project
-```
 cd handsfree-stable-diffusion
 ```
-3. Copy and edit the shell command. Changes needed:
+2. Copy and edit the shell command. Changes needed:
 - `my-stack-name`: to a preferred name. This name is what you are going to see on CloudFormation console and to be referred to in awscli
 - `keypair`: to the name of your key pair. e.g. `mykey.pem` should be `mykey`, without the `.pem` extension name
 
