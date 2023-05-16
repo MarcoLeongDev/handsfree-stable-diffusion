@@ -82,7 +82,7 @@ Safety     nsfw-censor (remove for the adventurous)
 # FAQ
 1. I am using another region, how do I find the right AMI image id?
 2. How do I skip the tweaks and just use the Cloudformation template and install stable diffusion webui?
-3. Can I use the code for my business?
+3. I see AGPL license, can I use the code for my business?
 4. Can I use the creation of stable diffusion for my business?
 5. I like ugly kangaroo, can I have more?
 6. Do you only prompt-engineering ugly kangaroos? https://pixai.art/@marcoleong
