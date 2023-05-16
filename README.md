@@ -3,6 +3,15 @@ Handsfree-stable-diffusion is a CloudFormation template plus script for deployin
 
 This Cloudformation template is tested on [`G5 instance`](https://aws.amazon.com/ec2/instance-types/g5/) with `Deep Learning AMI GPU PyTorch 2.0.0 (Ubuntu 20.04) 20230401` at `us-east-1` region. If other regions are preferred, make sure G5 is available in the region and change to an equivalent AMI id for that particular region
 
+# Features
+- Launch an Ubuntu EC2 with Nvidia A10G GPU via CloudFormation
+- Create an Elastic IP and attach to the EC2, this allow the EC2 to always use the same IP
+- Installations
+  - The prerequisites for stable diffusion webui
+  - Stable diffusion webui (Automatic1111)
+  - Installs tweaks (by default, but optional, [see the Tweaks section](#Tweaks))
+- Launches Stable diffusion and `nvtop` with `tmux` for backend monitoring
+
 # Prerequisites
 - An AWS account
 - `awscli`, see [official docs here](https://aws.amazon.com/cli/) 
@@ -50,8 +59,31 @@ echo "\nYou can also monitor with the progress \`tmux a\` by ssh to the instance
 Kindly provide some suggestions for Windows
 ```
 
+# Clean up remove CLI
+
+** Caution the following wipe everythig **
+```
+aws cloudformation delete-stack --region us-east-1 --stack-name "my-stack-name"
+```
+
+# Tweaks
+```
+Lora       add_detail
+Model      stable-diffusion-v2-1
+VAE        EMA and MSE for fixing face/eyes
+embeddings ng_deepnegative, verybadimagenegative, easynegative, badhand
+Tools      ControlNet, openpose
+Info       system info, images-browser
+Theme      kitchen-theme
+Safety     nsfw-censor (remove for the adventurous)
+```
+
+
 # FAQ
 1. I am using another region, how do I find the right AMI image id?
 2. How do I skip the tweaks and just use the Cloudformation template and install stable diffusion webui?
 3. Can I use the code for my business?
 4. Can I use the creation of stable diffusion for my business?
+5. I like ugly kangaroo, can I have more?
+6. Do you only prompt-engineering ugly kangaroos? https://pixai.art/@marcoleong
+7. Can I get you a coffee?
