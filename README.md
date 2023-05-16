@@ -1,4 +1,4 @@
-# Description
+# Handsfree-stable-diffusion for Stable Diffusion WebUI
 Handsfree-stable-diffusion is a CloudFormation template plus script for deploying Stable Diffusion webui with some tweats. This script automates the prerequisites, installs sd-webui based on the amazing [`AUTOMATIC1111/stable-diffusion-webui`](https://github.com/AUTOMATIC1111/stable-diffusion-webui) and some tweaks that can help getting started with stable diffusion
 
 This Cloudformation template is tested on [`G5 instance`](https://aws.amazon.com/ec2/instance-types/g5/) with `Deep Learning AMI GPU PyTorch 2.0.0 (Ubuntu 20.04) 20230401` at `us-east-1` region. If other regions are preferred, make sure G5 is available in the region and change to an equivalent AMI id for that particular region
