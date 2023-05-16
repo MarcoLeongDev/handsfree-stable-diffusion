@@ -7,21 +7,14 @@ This script automates the prerequisites, installs sd-webui based on the amazing 
 
 This Cloudformation template is tested on [`G5 instance`](https://aws.amazon.com/ec2/instance-types/g5/) with `Deep Learning AMI GPU PyTorch 2.0.0 (Ubuntu 20.04) 20230401` at `us-east-1` region. If other regions are preferred, make sure G5 is available in the region and change to an equivalent AMI id for that particular region
 
-# Features
-- Launch an Ubuntu EC2 with Nvidia A10G GPU via CloudFormation
-- Create an Elastic IP and attach to the EC2, this allow the EC2 to always use the same IP
-- Installations
-  - The prerequisites for stable diffusion webui
-  - Stable diffusion webui (Automatic1111)
-  - Installs tweaks (by default, but optional, [see the Tweaks section](#Tweaks))
-- Launches Stable diffusion and `nvtop` with `tmux` for backend monitoring
+All features is available in the [Features section](#Features)
 
-# Prerequisites
+### Prerequisites
 - An AWS account
 - `awscli`, see [official docs here](https://aws.amazon.com/cli/) 
 - A key pair for EC2, i.e `keypair.pem`
 
-# Usage 
+# Installation
 1. Clone this repo and change directory to the project
 ```
 git clone https://github.com/MarcoLeongDev/handsfree-stable-diffusion.git
@@ -70,7 +63,22 @@ Kindly provide some suggestions for Windows
 aws cloudformation delete-stack --region us-east-1 --stack-name "my-stack-name"
 ```
 
-# Tweaks
+# Features
+### What it does
+- Launch an Ubuntu EC2 with Nvidia A10G GPU via CloudFormation
+- Create an Elastic IP and attach to the EC2, this allow the EC2 to always use the same IP
+- Installations
+  - The prerequisites for stable diffusion webui
+  - Stable diffusion webui (Automatic1111)
+  - Installs tweaks (by default, but optional, [see the Tweaks section](#Tweaks))
+- Launches Stable diffusion and `nvtop` with `tmux` for backend monitoring
+
+### Resources
+- Ubuntu EC2 with [Nvidia A10G GPU](https://d1.awsstatic.com/product-marketing/ec2/NVIDIA_AWS_A10G_DataSheet_FINAL_02_17_2022.pdf)
+- Security Group, think of it as firewall in AWS
+- Elastic IP
+
+### Tweaks include
 ```
 Lora       add_detail
 Model      stable-diffusion-v2-1
@@ -82,6 +90,9 @@ Theme      kitchen-theme
 Safety     nsfw-censor (remove for the adventurous)
 ```
 
+### Notable programs include
+- tmux 
+- nvtop
 
 # FAQ
 1. I am using another region, how do I find the right AMI image id?
