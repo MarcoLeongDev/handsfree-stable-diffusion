@@ -303,8 +303,9 @@ The `minimum is 24GB` GPU memory and the `maximum is 768GB` GPU, so it is suitab
 - The plugin `nsfw-censor` replaces spicy content with black image. There are false-positive and false-negative but at least it help my script to be a bit more SFW. Feel free to disable it in the plugin tab.
 
 # Can I get you a coffee?
-Of course. To be honest, I would be saving to move away from my 9yo laptop from 2014
-
+Of course!
 - <a href="Ko-fi.com/marcoleong"><img src="./assets/logo_white_stroke_small.webp" width="50" /></a> 
 - <a href="buymeacoffee.com/marcoleong"><img src="./assets/buymeacoffee.png" width="80" /></a>
+- To be honest, I would be saving to move away from my 9yo laptop from 2014
+- More importantly, prioritise your own well-being first. Last thing I want is to benefit from anyone essential food money
 
