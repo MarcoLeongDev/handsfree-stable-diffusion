@@ -85,7 +85,6 @@ Ready at around:   Tue May 16 06:35:47 UTC 2023
 webui link:        http://▒▒.▒▒.▒▒.▒▒:7860
 
 SSH to the EC2:    ssh -i "keypair.pem" ubuntu@▒▒.▒▒.▒▒.▒▒
-SSH tunnel:        ssh -i "keypair.pem" -L 8080:localhost:7860 ubuntu@▒▒.▒▒.▒▒.▒▒ (accessible via: http://localhost:8080)
 
 You can also monitor with the progress `tmux a` by ssh to the instance after a couple of minutes
 ================================
@@ -93,7 +92,6 @@ You can also monitor with the progress `tmux a` by ssh to the instance after a c
 - `Ready at around`: an estimated time when the installation is ready
 - `webui link`: the url for your browser once the installation is completed
 - `SSH to the EC2`: sample code for SSH to the EC2. Optional yet recommended to gain more insights
-- `SSH tunnel`: sample code for tunneling. Useful when IP is unreachable and SSH is connectable, more information [see here](https://www.ssh.com/academy/ssh/tunneling)
 
 ## 4. Activate the tweaks
 Enter the url in a browser, http://▒▒.▒▒.▒▒.▒▒:7869 with the IP from the previous step, the default webui should be displayed:
