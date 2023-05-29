@@ -1,15 +1,15 @@
-# Handsfree-stable-diffusion for Stable Diffusion WebUI
+# Handsfree-stable-diffusion for EC2 G5 isntances
 ![Hadnsfree-sd.png](assets/handsfree-sd.png)
 
-Handsfree-stable-diffusion is a CloudFormation template plus script for deploying Stable Diffusion webui - fully hands free.
+Handsfree-stable-diffusion is a CloudFormation template+script for deploying Stable Diffusion webui - fully hands free.
 
-I originally created this script because my laptop is an ancient 2014 Macbook Pro, which is impossible to run stable-diffusion in any meaningful way. This script allows me explore stable diffusion on an EC2. I believe some of your can benefit from this template+script too.
+I originally created this script because my ancient 2014 laptop is impossible to run stable-diffusion in any meaningful way. This script enable me to explore stable diffusion and keep the cost very low by deploying and removing all the resources anytime. I believe this template+script will benefit some of you, brothers and sisters!
 
 For those who already have `awscli` configure, it is as easy as `copy and paste` the script, runs it and enjoy a coffee until the installation is completed
 
-This script automates the prerequisites, installs sd-webui based on the amazing work of [`AUTOMATIC1111`](https://github.com/AUTOMATIC1111/stable-diffusion-webui) and along with tweaks that can help getting started with stable diffusion.
+This script automates the prerequisites (resources, networking, driver for GPU, Python version), then installs sd-webui based on the amazing work of [`AUTOMATIC1111`](https://github.com/AUTOMATIC1111/stable-diffusion-webui), along with tweaks that can help getting started with stable diffusion.
 
-This Cloudformation template is tested on [`G5 instance`](https://aws.amazon.com/ec2/instance-types/g5/) with `Deep Learning AMI GPU PyTorch 2.0.0 (Ubuntu 20.04) 20230401` at `us-east-1` region. If other regions are used, ensure G5 is available in the region and change to an equivalent AMI id for that particular region
+This Cloudformation template+script is developed on [`G5 instance`](https://aws.amazon.com/ec2/instance-types/g5/) with `Deep Learning AMI GPU PyTorch 2.0.0 (Ubuntu 20.04) 20230401` at `us-east-1` region. If other regions are used, ensure G5 is available in the region and change to an equivalent AMI id for that particular region.
 
 All technical detail is available in the [Features section](#Features)
 
