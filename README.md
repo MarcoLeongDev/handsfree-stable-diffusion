@@ -3,7 +3,9 @@
 
 Handsfree-stable-diffusion is a CloudFormation template+script for deploying Stable Diffusion webui - fully hands free.
 
-I originally created this script because my ancient 2014 laptop is impossible to run stable-diffusion in any meaningful way. This script enable me to explore stable diffusion and keep the cost very low by deploying and removing all the resources anytime. I believe this template+script will benefit some of you brothers and sisters who are stuck with old laptops but love to explore stable diffusion.
+I originally created this script because my ancient 2014 laptop is impossible to run stable-diffusion in any meaningful way. This script enable me to explore stable diffusion and keep the cost very low by deploying and removing all the resources anytime. 
+
+I believe by open sourcing this template+script, it can benefit some of you brothers and sisters who are stuck with old laptops but love to explore stable diffusion.
 
 For those who already have `awscli` configure, it is as easy as `copy and paste` the script, runs it and enjoy a coffee until the installation is completed
 
