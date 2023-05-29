@@ -26,6 +26,14 @@ All technical detail is available in the [Features section](#Features)
 - A key pair for EC2, i.e `keypair.pem`
 - basic knowledge on AWS EC2/CFN helps, but not required
 
+# Jump to 
+- [Installation via CLI](#installation-cli)
+- [Installation via browser console](#installation-aws-web-console)
+- [Uninstall/remove all resources](#uninstall-cli)
+- [Technical Specifications](#technical-specifications)
+- [Cost](#pricing)
+- [FAQ](#faq)
+
 # Installation (CLI)
 ## 1. Download the template file
 ```
