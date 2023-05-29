@@ -273,17 +273,20 @@ The `minimum is 24GB` GPU memory and the `maximum is 768GB` GPU, so it is suitab
 6. The reason for using G5?
 - G5 is the latest offering from AWS, it is way cheaper and more power compare to previous instance type (g4dn, g3, etc)
 
-7. Are you really from Australia?
+7. Can I use this for g4dn type?
+- The template was developed using G5 instance, milage on g4dn might vary. G5 instance is cheaper, so why spending more?
+
+8. Are you really from Australia?
 - Yes and no, no one is really from Australia except the indigious people whom we learnt to respect more than the history did. But yes, I live here in beautiful Sydney. You should get your ass here and drink beer with us
 
-8. I like ugly kangaroo, can I have more?
+9. I like ugly kangaroo, can I have more?
 - They aren't ugly but here the full resolution and one extra:
 
 ![1](./assets/straya1.png)
 ![2](./assets/straya2.png)
 ![3](./assets/straya3.png)
 
-9. Are you a prompt-engineer only for questionable kangaroos? 
+10. Are you a prompt-engineer only for questionable kangaroos? 
 - I was luck to have other humble creations: https://pixai.art/@marcoleong
 
 # Can I get you a coffee?
