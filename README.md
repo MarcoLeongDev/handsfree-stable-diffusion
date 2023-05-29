@@ -26,7 +26,7 @@ All technical detail is available in the [Features section](#Features)
 - A key pair for EC2, i.e `keypair.pem`
 
 # Installation (CLI)
-## 1. Download the `handsfree-sd-g5.yml` file
+## 1. Download the template file
 ```
 curl -o handsfree-sd-g5.yml https://raw.githubusercontent.com/MarcoLeongDev/handsfree-stable-diffusion/main/handsfree-sd-g5.yml
 ```
@@ -48,7 +48,7 @@ echo "webui link:        http://"$INSTANCE_IP":7860"
 echo "SSH to the EC2:    ssh -i \"$KEY_NAME.pem\" ubuntu@$INSTANCE_IP"
 echo "\nYou can also monitor with the progress \`tmux a\` by ssh to the instance after a couple of minutes\n"
 ```
-\* to relaunch the [webui in the backend](#e-relaunch-the-tmux-dash)
+\* [to relaunch the webui in the backend](#e-relaunch-the-tmux-dash)
 
 ### Linux/Unix CLI
 ```
@@ -63,7 +63,7 @@ echo "webui link:        http://"$INSTANCE_IP":7860"
 echo "SSH to the EC2:    ssh -i \"$KEY_NAME.pem\" ubuntu@$INSTANCE_IP"
 echo "\nYou can also monitor with the progress \`tmux a\` by ssh to the instance after a couple of minutes\n"
 ```
-\* to relaunch the [webui in the backend](#e-relaunch-the-tmux-dash)
+\* [to relaunch the webui in the backend](#e-relaunch-the-tmux-dash)
 
 ### Windows Command Prompt / Powershell
 ```
