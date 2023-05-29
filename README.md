@@ -268,7 +268,7 @@ The `minimum is 24GB` GPU memory and the `maximum is 768GB` GPU, so it is suitab
 - I am more familiar with Cloudformation. If you can help me with terraform, you are absolutely welcome.
 
 5. Why are you choosing the template+script approach?
-- I believe CFN template with user data script is a clearer solution as everything is in one single file. I could have move the bash script external and fetch+execute with user data, but I found this approach make the script invisible to the end user. So it is more about balance the pros and cons
+- I believe CFN template with user data script is a clearer solution as everything is self-contained in one single file. I could have move the bash script external and fetch+execute with user data, but I found this approach make the script invisible to the end user. So it is more about balance the pros and cons
 
 6. The reason for using G5?
 - G5 is the latest offering from AWS, it is way cheaper and more power compare to previous instance type (g4dn, g3, etc)
