@@ -258,6 +258,8 @@ Safety     nsfw-censor (remove for the adventurous)
 - nvtop: to monitor GPU and CPU memory and % usage
 
 # Pricing
+This template+script is free to use under AGPL License. The usage cost by resource usage is between the user and AWS. Please be mindful by understanding the EC2 cost structure.
+
 At the time of writing (29th May 2023), the smallest instance type `g5.xlarge` (1 CPU, 4 vCPU, 24GB GPU memory, 16GB RAM) cost $1.006 in us-east-1. Refer to the [most updated pricing info here](https://aws.amazon.com/ec2/instance-types/g5/#Product_details). For my exploration, I never have to using anything above `g5.xlarge`, `approx $1/hr` is decently affordable for exploration and hobbiest. 
 
 The `minimum is 24GB` GPU memory and the `maximum is 768GB` GPU, so it is suitable for hobbyist, also to run massive project and anything in between!
