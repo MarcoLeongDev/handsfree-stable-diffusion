@@ -33,7 +33,7 @@ curl -o handsfree-sd-g5.yml https://raw.githubusercontent.com/MarcoLeongDev/hand
 ## 2. Copy and edit the following shell command
 Changes needed:
 - `my-stack-name`: to a preferred name. This name is what you are going to see on CloudFormation console and to be referred to in awscli
-- `keypair`: to the name of your key pair. e.g. `mykey.pem` should be `mykey`, without the `.pem` extension name
+- `keypair`: to the name of your key pair. e.g. `mykey.pem` should be `mykey`, without the `.pem` extension name. If you need help understanding keypair, [see the doc here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)
 
 ### MacOS CLI
 ```
