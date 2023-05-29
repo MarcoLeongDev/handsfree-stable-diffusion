@@ -260,6 +260,7 @@ At the time of writing (29th May 2023), the smallest instance type `g5.xlarge` (
 
 4. I like ugly kangaroo, can I have more?
 - They aren't ugly but here they are:
+
 ![1](./assets/straya1.png)
 ![2](./assets/straya2.png)
 ![3](./assets/straya3.png)
