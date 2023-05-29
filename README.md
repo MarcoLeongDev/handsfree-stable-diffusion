@@ -24,6 +24,7 @@ All technical detail is available in the [Features section](#Features)
 - An AWS account
 - `awscli` installed and configured, see [official docs here](https://aws.amazon.com/cli/) 
 - A key pair for EC2, i.e `keypair.pem`
+- basic knowledge on AWS EC2/CFN helps, but not required
 
 # Installation (CLI)
 ## 1. Download the template file
@@ -263,14 +264,23 @@ The `minimum is 24GB` GPU memory and the `maximum is 768GB` GPU, so it is suitab
 3. Can I use the creation of stable diffusion for my business?
 - My understanding is the authorship is defined differently in different jurisdictions. Again, ask your lawyer to ensure it is okay
 
-4. I like ugly kangaroo, can I have more?
-- They aren't ugly but here they are:
+4. Y CFN? Y U no terraform?
+- I am more familiar with Cloudformation. If you can help me with terraform, you are absolutely welcome.
+
+5. Why are you choosing the template+script approach?
+- I believe CFN template with user data script is a clearer solution as everything is in one single file. I could have move the bash script external and fetch+execute with user data, but I found this approach make the script invisible to the end user. So it is more about balance the pros and cons
+
+6. Are you really from Australia?
+- Yes and no, no one is really from Australia except the indigious people whom we learnt to respect more than the history did. But yes, I live here in beautiful Sydney. You should get your ass here and drink beer with us
+
+7. I like ugly kangaroo, can I have more?
+- They aren't ugly but here the full resolution and one extra:
 
 ![1](./assets/straya1.png)
 ![2](./assets/straya2.png)
 ![3](./assets/straya3.png)
 
-5. Are you a prompt-engineer only for questionable kangaroos? 
+8. Are you a prompt-engineer only for questionable kangaroos? 
 - I was luck to have other humble creations: https://pixai.art/@marcoleong
 
 # Can I get you a coffee?
