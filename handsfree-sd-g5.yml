@@ -1,0 +1,194 @@
+# Handsfree-SD Cloudformation template is meant to be used with the bash script included
+# This script automates the prerequisites, installs sd-webui and some tweaks that can help getting started with stable diffusion
+#
+# Github page: https://github.com/MarcoLeongDev/handsfree-stable-diffusion
+#
+# This Cloudformation template is tested on G5 instance with Deep Learning AMI GPU PyTorch 2.0.0 (Ubuntu 20.04) 20230401 at us-east-1 region.
+# If other regions are used, make sure G5 is available in the region and an equivalent AMI id will be needed
+#
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  A handsfree CloudFormation for Stable Diffusion Web UI via bash shell script. Tested on G5 instance with Deep Learning AMI GPU PyTorch 2.0.0 (Ubuntu 20.04) 20230401
+Parameters:
+  KeyName:
+    Description: Enter the key name
+    Type: String
+  InstanceType:
+    Description: Enter g5.xlarge, g5.2xlarge, g5.4xlarge, etc
+    Type: String
+    Default: "g5.xlarge" # default to lowest for exploration
+  AmiId:
+    Description: Enter Deep Learning Ubuntu ami-0a4caa099fc23090f(us-east-1)
+    Type: String
+    Default: "ami-0a4caa099fc23090f"
+  DriveSize:
+    Description: gp3 EBS drive size in GB
+    Type: Number
+    Default: 200
+Resources:
+  SecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: Security group for SD WebUI EC2 instance
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 7860
+          ToPort: 7860
+          CidrIp: 0.0.0.0/0
+  EC2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: !Ref InstanceType
+      ImageId: !Ref AmiId
+      KeyName: !Ref KeyName
+      BlockDeviceMappings:
+        - DeviceName: /dev/sda1
+          Ebs:
+            VolumeSize: !Ref DriveSize
+            VolumeType: gp3
+      Tags:
+        - Key: Name
+          Value: Handsfree-sd-ubuntu-nvidia-A10G
+        - Key: Auto-delete
+          Value: never
+      SecurityGroups:
+        - !Ref SecurityGroup
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+
+          ##### About #####
+          # Handsfree-SD script is meant to be used with a matching CloudFormation template.
+          # The goal is to create a handfree experience by automating the deployment of EC2 and 
+          # installing & launching stable diffusion with some opinionate adjustments for getting started``
+          #
+          # Source link:      
+          # AGPL-3.0 license: https://www.gnu.org/licenses/agpl-3.0.en.html
+
+          # Settings
+          INSTALL_DIRECTORY="/home/ubuntu"
+          INSTALL_TWEAKS=true
+
+          # function for logging
+          script_log () {
+              timestamp=`date +%R`
+              echo $timestamp":"$1
+              echo "[Handsfree]" $timestamp"- "$1 >> $INSTALL_DIRECTORY/progress.log
+          }
+
+          script_log "Handsfree script started"
+          script_log "Installing dependencies"
+
+          sudo apt update; sudo apt upgrade -y
+          sudo apt-get update; sudo apt-get upgrade -y
+          sudo apt-get install software-properties-common -y
+          sudo apt-get install libgoogle-perftools4 libtcmalloc-minimal4 google-perftools -y
+          sudo add-apt-repository ppa:deadsnakes/ppa -y
+          sudo apt install wget git git-lfs nnn ffmpeg python3.10 -y
+          sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
+          sudo apt install python3-pip python3-setuptools python3.10-venv virtualenv -y
+          sudo apt install python3-opencv -y
+          sudo snap install nvtop jump
+
+          ##### 
+          sudo -u ubuntu echo 'setw -g mouse on' >> .tmux.conf
+          sudo -u ubuntu echo 'eval "$(jump shell)"' >> $INSTALL_DIRECTORY/.bashrc
+
+          ##### install and launch, shared
+          script_log "Installing stable diffussion webui"
+          cd $INSTALL_DIRECTORY
+
+          sudo -u ubuntu tmux new-session -d -s "stable-diffusion-session" watch "df -h --output=source,pcent | head -4; echo ""; cat progress.log; echo ""; echo "";  tmux list-sessions" \;  split-window -h -p 75 nvtop\; split-window -v "git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git stable-diffusion-webui; bash $INSTALL_DIRECTORY/stable-diffusion-webui/webui.sh --listen --xformers --enable-insecure-extension-access --skip-torch-cuda-test; read" \;
+
+          # To launch again:
+          # cd ~; sudo -u ubuntu tmux new-session -s "stable-diffusion-session" watch "df -h --output=source,pcent | head -4; echo ""; cat progress.log; echo "";  tmux list-sessions" \;  split-window -h -p 75 nvtop\; split-window -v "bash stable-diffusion-webui/webui.sh --listen --xformers --enable-insecure-extension-access --skip-torch-cuda-test; read" \;
+
+          ##### OPTIONAL #####
+          # The following tweaks are optional.
+          # They can be disabled anytime in the webui
+          # This is a humble opinion to get started with stable diffusion webui
+          #
+          # Lora       add_detail
+          # Model      stable-diffusion-v2-1
+          # VAE        EMA and MSE for fixing face/eyes
+          # embeddings ng_deepnegative, verybadimagenegative, easynegative, badhand
+          # Tools      ControlNet, openpose
+          # Info       system info, images-browser
+          # Theme      kitchen-theme
+          # Safety     nsfw-censor
+
+          # For skipping tweaks
+          if [ "$INSTALL_TWEAKS" = false ]; then
+              script_log "Script completed. Installation is still in progress."
+              exit 0
+          fi
+
+          # Wait for 500 seconds for webui to install before continuing to install tweaks
+          script_log "Wait 500 seconds for stable diffusion webui installation"
+          for i in {1..5}
+          do
+              sleep 100
+              script_log "$(( i*100 ))/500 seconds"
+          done
+
+          script_log "Dispatches the installation of extras"
+
+          ###### Stable Diffusion models, Lora and VAE
+          sources='[
+              {"name":"models/Lora/add_detail.safetensors", "url":"https://civitai.com/api/download/models/62833"},
+              {"name":"embeddings/badhandv4.pt", "url":"https://civitai.com/api/download/models/20068?type=Model&format=PickleTensor&size=full&fp=fp16"},
+              {"name":"embeddings/easynegative.pt", "url":"https://civitai.com/api/download/models/9536?type=Model&format=PickleTensor&size=full&fp=fp16"},
+              {"name":"embeddings/ng_deepnegative_v1_75t.pt", "url":"https://civitai.com/api/download/models/5637?type=Model&format=PickleTensor&size=full&fp=fp16"},
+              {"name":"embeddings/verybadimagenegative_v1.3.pt", "url":"https://civitai.com/api/download/models/25820?type=Model&format=PickleTensor&size=full&fp=fp16"},
+              {"name":"models/Stable-diffusion/v2-1_768-nonema-pruned.safetensors", "url":"https://huggingface.co/stabilityai/stable-diffusion-2-1/resolve/main/v2-1_768-nonema-pruned.safetensors"},
+              {"name":"models/VAE/vae-ft-ema-560000-ema-pruned.ckpt", "url":"https://huggingface.co/stabilityai/sd-vae-ft-ema-original/resolve/main/vae-ft-ema-560000-ema-pruned.ckpt"},
+              {"name":"models/VAE/vae-ft-mse-840000-ema-pruned.ckpt", "url":"https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.ckpt"},
+              {"name":"models/VAE/kl-f8-anime2.vae.pt", "url":"https://civitai.com/api/download/models/38916?type=VAE&format=Other"}
+          ]'
+          echo $sources | jq -c .[] | while read item; do     
+              url=$(echo $item | jq -r '.url')
+              name=$(echo $item | jq -r '.name')
+              sudo -u ubuntu tmux new-session -d wget -O $INSTALL_DIRECTORY/stable-diffusion-webui/$name $url
+          done
+
+          ###### Stable diffusion extension
+          extension_repos='[
+              {"name":"openpose-editor", "url":"https://github.com/fkunn1326/openpose-editor.git"},
+              {"name":"sd-extension-system-info", "url":"https://github.com/vladmandic/sd-extension-system-info.git"},
+              {"name":"stable-diffusion-webui-nsfw-censor", "url":"https://github.com/AUTOMATIC1111/stable-diffusion-webui-nsfw-censor.git"},
+              {"name":"stable-diffusion-webui-images-browser", "url":"https://github.com/AlUlkesh/stable-diffusion-webui-images-browser.git"},
+              {"name":"sd-web-ui-kitchen-theme", "url":"https://github.com/canisminor1990/sd-web-ui-kitchen-theme.git"}
+          ]'
+          echo $extension_repos | jq -c .[] | while read item; do     
+              url=$(echo $item | jq -r '.url')
+              name=$(echo $item | jq -r '.name')
+              sudo -u ubuntu tmux new-session -d git clone $url $INSTALL_DIRECTORY/stable-diffusion-webui/extensions/$name
+          done
+
+          ###### Install control ControlNet and download models
+          script_log "Installing ControlNet"
+          sudo -u ubuntu tmux new-session -d "git clone https://github.com/Mikubill/sd-webui-controlnet $INSTALL_DIRECTORY/stable-diffusion-webui/extensions/Controlnet"
+          script_log "Dispatches the fetching of ControlNet models"
+          sudo -u ubuntu tmux new-session -d "git clone https://huggingface.co/lllyasviel/ControlNet $INSTALL_DIRECTORY/ContolNet-tmp/; sudo mv $INSTALL_DIRECTORY/ContolNet-tmp/models/* $INSTALL_DIRECTORY/stable-diffusion-webui/extensions/Controlnet/models/; sudo rm -rf $INSTALL_DIRECTORY/ContolNet-tmp"
+
+          script_log "All downloads task scheduled. Some installations and tweak may still be in progress in parallel"
+  MyEIP:
+    Type: 'AWS::EC2::EIP'
+  MyEIPAssociation:
+    Type: 'AWS::EC2::EIPAssociation'
+    Properties:
+      AllocationId: !GetAtt 
+        - MyEIP
+        - AllocationId
+      InstanceId: !Ref EC2Instance
+
+Outputs:
+  PublicIp:
+    Description: Server Public IP
+    Value: !GetAtt EC2Instance.PublicIp
+    Export:
+      Name: !Sub "${AWS::StackName}-PublicIp"
