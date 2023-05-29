@@ -245,7 +245,7 @@ Theme      kitchen-theme
 Safety     nsfw-censor (remove for the adventurous)
 ```
 
-### Notable programs include
+### Notable programs included
 - tmux: to allow parallel and acts as dashboard for the backend
 - nvtop: to monitor GPU and CPU memory and % usage
 
