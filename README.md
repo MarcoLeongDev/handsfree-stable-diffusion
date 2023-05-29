@@ -297,7 +297,10 @@ The `minimum is 24GB` GPU memory and the `maximum is 768GB` GPU, so it is suitab
 ![3](./assets/straya3.png)
 
 10. Are you a prompt-engineer only for questionable kangaroos? 
-- I was luck to have other humble creations: https://pixai.art/@marcoleong
+- I was luck to have other humble creations: https://pixai.art/@marcoleong and https://civitai.com/user/mark0
+
+11. Why is the generated image black/dark image?
+- The plugin `nsfw-censor` replaces spicy content with black image. There are false-positive and false-negative but at least it help my script to be a bit more SFW. Feel free to disable it in the plugin tab.
 
 # Can I get you a coffee?
 Of course. To be honest, I would be saving to move away from my 9yo laptop from 2014
