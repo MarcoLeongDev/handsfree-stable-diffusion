@@ -83,7 +83,6 @@ Handsfree-sd script requires around 30 mins to complete stable diffusion + tweak
 
 Ready at around:   Tue May 16 06:35:47 UTC 2023
 webui link:        http://▒▒.▒▒.▒▒.▒▒:7860
-
 SSH to the EC2:    ssh -i "keypair.pem" ubuntu@▒▒.▒▒.▒▒.▒▒
 
 You can also monitor with the progress `tmux a` by ssh to the instance after a couple of minutes
