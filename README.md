@@ -270,17 +270,20 @@ The `minimum is 24GB` GPU memory and the `maximum is 768GB` GPU, so it is suitab
 5. Why are you choosing the template+script approach?
 - I believe CFN template with user data script is a clearer solution as everything is in one single file. I could have move the bash script external and fetch+execute with user data, but I found this approach make the script invisible to the end user. So it is more about balance the pros and cons
 
-6. Are you really from Australia?
+6. The reason for using G5?
+- G5 is the latest offering from AWS, it is way cheaper and more power compare to previous instance type (g4dn, g3, etc)
+
+7. Are you really from Australia?
 - Yes and no, no one is really from Australia except the indigious people whom we learnt to respect more than the history did. But yes, I live here in beautiful Sydney. You should get your ass here and drink beer with us
 
-7. I like ugly kangaroo, can I have more?
+8. I like ugly kangaroo, can I have more?
 - They aren't ugly but here the full resolution and one extra:
 
 ![1](./assets/straya1.png)
 ![2](./assets/straya2.png)
 ![3](./assets/straya3.png)
 
-8. Are you a prompt-engineer only for questionable kangaroos? 
+9. Are you a prompt-engineer only for questionable kangaroos? 
 - I was luck to have other humble creations: https://pixai.art/@marcoleong
 
 # Can I get you a coffee?
