@@ -15,7 +15,7 @@ This Cloudformation template+script is developed on [`G5 instance`](https://aws.
 
 All technical detail is available in the [Features section](#Features)
 
-Why this script?
+### Why this script?
 - Instance configuration to find the right GPU, AMI and driver can be a lengthly process, the right combination is ready in the template
 - Installing dependencies often requires one to babysit the CLI, the script fully automate the process
 
