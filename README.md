@@ -26,10 +26,9 @@ All technical detail is available in the [Features section](#Features)
 - A key pair for EC2, i.e `keypair.pem`
 
 # Installation (CLI)
-## 1. Clone this repo and change directory to the project
+## 1. Download the `handsfree-sd-g5.yml` file
 ```
-git clone https://github.com/MarcoLeongDev/handsfree-stable-diffusion.git
-cd handsfree-stable-diffusion
+curl -o handsfree-sd-g5.yml https://raw.githubusercontent.com/MarcoLeongDev/handsfree-stable-diffusion/main/handsfree-sd-g5.yml
 ```
 ## 2. Copy and edit the following shell command
 Changes needed:
