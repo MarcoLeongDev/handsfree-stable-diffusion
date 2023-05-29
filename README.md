@@ -268,8 +268,8 @@ At the time of writing (29th May 2023), the smallest instance type `g5.xlarge` (
 5. Are you a prompt-engineer only for questionable kangaroos? 
 - I was luck to have other humble creations: https://pixai.art/@marcoleong
 
-6. This template/script is great. Can I get you a coffee?
-- Of course. To be honest, I would be saving to move away from my 9yo laptop from 2014
+# Can I get you a coffee?
+Of course. To be honest, I would be saving to move away from my 9yo laptop from 2014
 
 - <a href="Ko-fi.com/marcoleong"><img src="./assets/logo_white_stroke_small.webp" width="50" /></a> 
 - <a href="buymeacoffee.com/marcoleong"><img src="./assets/buymeacoffee.png" width="80" /></a>
