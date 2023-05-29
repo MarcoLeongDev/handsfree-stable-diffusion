@@ -258,7 +258,7 @@ Safety     nsfw-censor (remove for the adventurous)
 - nvtop: to monitor GPU and CPU memory and % usage
 
 # Pricing
-This template+script is free to use under AGPL License. The usage cost by resource usage is between the user and AWS. Please be mindful by understanding the EC2 cost structure.
+This template+script is absolutely free to use under AGPL License. The deployed resources usage cost is the user and AWS. Please be mindful by understanding the EC2 cost structure to avoid unecessary spending.
 
 At the time of writing (29th May 2023), the smallest instance type `g5.xlarge` (1 CPU, 4 vCPU, 24GB GPU memory, 16GB RAM) cost $1.006 in us-east-1. Refer to the [most updated pricing info here](https://aws.amazon.com/ec2/instance-types/g5/#Product_details). For my exploration, I never have to using anything above `g5.xlarge`, `approx $1/hr` is decently affordable for exploration and hobbiest. 
 
@@ -301,6 +301,18 @@ The `minimum is 24GB` GPU memory and the `maximum is 768GB` GPU, so it is suitab
 
 11. Why is the generated image black/dark image?
 - The plugin `nsfw-censor` replaces spicy content with black image. There are `false-positive` and `false-negative` but at least it helps the result to be more SFW, which is a good starting point of learning. Feel free to disable it in the plugin tab if other usage is needed
+
+12. I am not a big fan of Kitchen theme, can I disable it?
+- The kitchen theme plugin can be disabled in the plugin tab
+
+13. I can see this is minimum version, do you have a maximum version that you use?
+- Yes, I do a version with more models and plugins that I have collected through time. I am planning to open source it as well if people like to have it. But first of all let's try to improve this basic version of the template+script first
+
+14. I am using not using the region `us-east-1`, how do I find the right AMI for a region?
+- The quickest way is through the console: `EC2 console` -> Launch an instance -> `Application and OS Images (Amazon Machine Image)` panel -> `Amazon Machine Image (AMI)` dropdown menu -> search `pytorch` for search. The AMI id of `Deep Learning AMI GPU PyTorch 2.x.x` should be a right one
+
+15. Cloudformation errors out saying that AMI is not found?
+- This is because you are deploying in another region apart from `us-east-1`. If you need to check if G5 is available in the the region. Then following (14) in FAQ to find the right AMI id and replace the one in the templated
 
 # Can I get you a coffee?
 Of course, and thank you.
