@@ -53,8 +53,6 @@ Resources:
       Tags:
         - Key: Name
           Value: Handsfree-sd-ubuntu-nvidia-A10G
-        - Key: Auto-delete
-          Value: never
       SecurityGroups:
         - !Ref SecurityGroup
       UserData:
