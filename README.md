@@ -211,7 +211,7 @@ To Windows Gurus, would you kindly provide some the equivalent for Command Promp
 ![step 7](assets/installation%20step%207.png)
 
 ## 9. Activate the tweaks
-Enter the url in a browser, http://▒▒.▒▒.▒▒.▒▒:7869 with the IP from the previous step, it should show the default UI
+Enter the url in a browser, http://▒▒.▒▒.▒▒.▒▒:7860 with the IP from the previous step, it should show the default UI
 
 ![default ui.png](assets/default%20ui.png)
 
